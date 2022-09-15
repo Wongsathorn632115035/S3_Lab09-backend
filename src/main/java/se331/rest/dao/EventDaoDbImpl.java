@@ -15,6 +15,7 @@ import java.util.List;
 public class EventDaoDbImpl implements EventDao {
     @Autowired
     EventRepository eventRepository;
+
     @Override
     public Integer getEventSize() {
         return Math.toIntExact(eventRepository.count());
@@ -28,5 +29,13 @@ public class EventDaoDbImpl implements EventDao {
     @Override
     public Event getEvent(Long id) {
         return eventRepository.findById(id).orElse(null);
+    }
+
+    @Override
+
+    public Event save(Event event) {
+
+        return eventRepository.save(event);
+
     }
 }
