@@ -5,7 +5,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.rest.entity.Event;
+import se331.rest.entity.Org;
 import se331.rest.repository.EventRepository;
+import se331.rest.repository.OrgRepository;
 
 @Component
 
@@ -14,6 +16,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
 
     EventRepository eventRepository;
+    @Autowired
+    OrgRepository orgRepository;
 
     @Override
 
@@ -90,6 +94,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petAllowed(true)
 
                 .organizer("Chiang Mai Municipality").build());
+
+        orgRepository.save(Org.builder()
+                .name("ABC")
+                .address("13 EFC").build());
+
 
     }
 
